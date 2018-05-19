@@ -131,32 +131,6 @@ def add_preprocessed_field_to_reviews():
 
 
 
-
-'''
-    Counting word frequency
-'''
-def counting_word_frequency():
-    thefile = open('test.txt', 'w+')
-    count = 0
-    for data in db["reviews"].find():
-        temp = text_process(data["text"])
-        count += 1
-        for item in temp:
-            thefile.write("%s " % item)
-        print(count)
-
-    # fdist = FreqDist()
-    # words = open('test.txt', 'r')
-    # freq = pd.Series(' '.join(words.readline()).split()).value_counts()[:1000]
-    with open('test.txt', 'r') as f:
-        # passage = f.read()
-        # words = re.findall(r'\w+', passage)
-        word_counts = pd.Series(' '.join(f.readline()).split()).value_counts()[:1000]
-    with open('common_words.txt', 'w+') as outfile:
-        outfile.write(word_counts)
-        print(word_counts)
-
-
 def classifier_MultinomialNB(X_train, X_test, y_train, y_test):
     print("Fitting the classifier...")
     classifier = MultinomialNB()
