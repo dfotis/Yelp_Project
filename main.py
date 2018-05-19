@@ -183,12 +183,6 @@ def initialize_db():
     return db
 
 def text_process(text):
-    '''
-    Takes in a string of text, then performs the following:
-    1. Remove all punctuation
-    2. Remove all stopwords
-    3. Return the cleaned text as a list of words
-    '''
     stemmer = SnowballStemmer("english")
 
     nopunc = [char for char in text if char not in string.punctuation]
